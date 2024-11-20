@@ -17,16 +17,16 @@ exe_name = game.exe
 
 # Compiler and flags
 CC = gcc
-CFLAGS = -std=c17 -Wall
+CFLAGS = -std=c17 -Wall 
 
 # Add all subdirectories of lib/ to the include path
-INCLUDE_PATHS := $(shell find lib -type d)
+INCLUDE_PATHS := $(shell find include -type d)
+CFLAGS += -DPLATFORM_DESKTOP
 CFLAGS += $(addprefix -I, $(INCLUDE_PATHS))
 
 # Library paths and libraries
-LIBRARY_PATHS := $(shell find lib -type d)
-LDFLAGS := $(addprefix -L, $(LIBRARY_PATHS))
-LDLIBS := -lopengl32 -lgdi32 -lwinmm
+LDFLAGS := -Llib 
+LDLIBS := -lraylib -lopengl32 -lgdi32 -lwinmm 
 
 
 # Find all .c files in src/ and lib/ directories recursively
@@ -44,6 +44,7 @@ bin/$(exe_name): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(LDLIBS)
 
 # Compile .c files to .o files in build/ directory
+# build/%.o: %.c
 build/%.o: %.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@

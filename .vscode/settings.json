@@ -1,5 +1,17 @@
 {
     "C_Cpp.default.includePath": [
         "lib/**"
-    ]
+    ],
+    "files.associations": {
+        "*.sql": "postgres",
+        "*.html": "html",
+        "*.jj": "java",
+        "*.pl": "prolog",
+        "*.mch": "rmchAddOn",
+        "*.imp": "rmchAddOn",
+        "*.tmj": "json",
+        "*.tsx": "xml",
+        "*.toml": "toml",
+        "mainscreen.h": "c"
+    }
 }
