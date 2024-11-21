@@ -1,5 +1,8 @@
 #include "util.h"
 
+#define STB_DS_IMPLEMENTATION
+#include "util/stb_ds.h"
+
 float getZoom(int xUnits, int yUnits) {
     if (GetScreenWidth() > GetScreenHeight()) {
         return (float) GetScreenWidth() / (float) xUnits;
