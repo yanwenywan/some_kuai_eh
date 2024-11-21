@@ -56,3 +56,6 @@ clean:
 # Production build with optimization flags
 production: CFLAGS += -O3
 production: all
+
+debug: CFLAGS += -g
+debug: all
