@@ -1,14 +1,15 @@
 #include "mainScreen.h"
-#include "util.h"
+#include "components/button.h"
 
 
 Screen mainScreen = {&initMainScreen, &updateMainScreen, &drawMainScreen, &disposeMainScreen, false};
 
 Camera2D camera;
 
-int xUnits = 100;
-int yUnits = 60;
+int xUnits = 500;
+int yUnits = 300;
 
+KeyButton key_naught; 
 
 void initMainScreen() {
     camera = (Camera2D) {
@@ -17,6 +18,9 @@ void initMainScreen() {
         .rotation = 0.0f,
         .zoom = getZoom(xUnits, yUnits)
     };
+
+    Color c = fromHex(0x304050FF);
+    printf("Color {%d, %d, %d, %d}", c.r, c.g, c.b, c.a);
 }
 
 void updateMainScreen() {
@@ -46,9 +50,9 @@ void drawMainScreen() {
     
     ClearBackground(RAYWHITE);
     
-    DrawText("This is the first window in Raylib", 0, 0, 12, BLACK);
-
     BeginMode2D(camera);
+
+    DrawText("This is the first window in Raylib", 0, 0, 12, BLACK);
 
     for (int i = -200; i <= 200; i+= 10) {
         DrawLine(i, 0, i, yUnits, (Color){0, 255, 0, 255 - abs(i)});
@@ -65,3 +69,5 @@ void drawMainScreen() {
 void disposeMainScreen() {
 
 }
+
+

@@ -21,6 +21,7 @@ CFLAGS = -std=c17 -Wall
 
 # Add all subdirectories of lib/ to the include path
 INCLUDE_PATHS := $(shell find include -type d)
+INCLUDE_PATHS += $(shell find src -type d)
 CFLAGS += -DPLATFORM_DESKTOP
 CFLAGS += $(addprefix -I, $(INCLUDE_PATHS))
 
